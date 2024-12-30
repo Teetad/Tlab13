@@ -19,3 +19,49 @@ int main(){
     cout << "Min = " << B[5];
     return 0;
 }
+
+void stat(const double A[] ,int N ,double B[]){
+    
+    double AM;
+    double storage;
+    double box;
+    
+    for (int i = 0; i < N; i++){
+        storage += A[i];
+    }
+    AM = storage / N;
+    B[0] = AM;
+    
+    double SD;
+    storage = 0;
+    for (int i = 0; i < N; i++){
+        storage += pow(A[i] - AM, 2);
+    }
+    SD = sqrt(storage/(N));
+    B[1] = SD;
+    
+    double GM;
+    storage = 1;
+    for (int i = 0; i < N; i++){
+        storage = storage * A[i];
+    }
+    GM = pow(storage,(float)1/N);
+    B[2] = GM;
+    
+    double HM;
+    storage = 0;
+    for (int i = 0; i < N; i++){
+        storage += (double)1/A[i];
+    }
+    HM = (double)N / storage;
+    cout << HM;
+    B[3] = HM;
+    
+    double MAX = A[0];
+    double min = A[0];
+    for (int i = 0; i < N; i++){
+        if (A[i] > MAX) MAX = A[i];
+        if (A[i] < min) min = A[i];
+    }
+    B[4] = MAX; B[5] = min;
+}
